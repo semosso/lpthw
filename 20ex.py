@@ -35,3 +35,5 @@ print_a_line(current_line, current_file)
 
 current_line += 1
 print_a_line(current_line, current_file)
+current_file.close() # figure out why this doesn't result in an error (unlike 17ex.py, for instance)
+## because unlike in ex 17, I actually had saved/assigned the open file to the variable, i.e., kept it open
