@@ -37,3 +37,8 @@ what = add(age, subtract(height, multiply(weight, divide(iq, 2)))) # -4391? yep.
 # note in particular that this is taking the RETURN of functions as ARGUMENTS of other functions
 
 print('That becomes: ', what, 'Can you do it by hand?') # yep.
+
+# figuring out the formula from page 74: 24 + 34 / 100 - 1023
+formula_p74 = add(24, divide(34, subtract(100, 1023))) # actually this doesn't make sense mathematically, divide has to be priority
+print(f'Resultado errado: {formula_p74}')
+print(f'Resultado correto: ', add(24, subtract(divide(34, 100), 1023))) # this might be it; also, no need to define variable
