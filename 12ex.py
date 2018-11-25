@@ -11,4 +11,6 @@ print(f'So, you\'re {age}, {height} tall and {weight} heavy.')
 # can I use it to document my own functions? actually, can I 'create' functions?
 
 # trying to see what comes from using input() inside print, without storing a variable
-print('How old are you?', input()) # you don't get a prompt until you insert some data... Why?
+print('How old are you?', input())
+# you don't get a prompt until you insert some data... Why?
+## because it needs to see what input is before printing (as inputs is inside print), and there's no prompt inside input()
