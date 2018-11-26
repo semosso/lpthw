@@ -41,4 +41,4 @@ print('That becomes: ', what, 'Can you do it by hand?') # yep.
 # figuring out the formula from page 74: 24 + 34 / 100 - 1023
 formula_p74 = add(24, divide(34, subtract(100, 1023))) # actually this doesn't make sense mathematically, divide has to be priority
 print(f'Resultado errado: {formula_p74}')
-print(f'Resultado correto: ', add(24, subtract(divide(34, 100), 1023))) # this might be it; also, no need to define variable
+print('Resultado correto: ', add(24, subtract(divide(34, 100), 1023))) # this is it; no need to define variable, so no need to FORMAT
