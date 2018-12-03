@@ -11,13 +11,16 @@ def main(language_file, encoding, errors):
 
     if line: # is this here just in case READLINE reaches EOF? i.e., in which case READLINE would read nothing (or result in exception?)
              # i.e., I'm assuming that this meant "if line has any actual value assigned to it"
+             # p. 83, yep, exactly right
         print_line(line, encoding, errors)
         return main(language_file, encoding, errors)
         # what does this do? RETURN of MAIN is calling MAIN again? Or "use the return from print_line as parameters for main"?
+        # the first one; it means that calling MAIN again (it doesn't run forever, since IF is a EOF check, as cmmts above)
 
 
 def print_line(line, encoding, errors):
-    next_lang = line.strip() # STRIP is a METHOD of the line OBJECT; what does it do?
+    next_lang = line.strip() # STRIP is a METHOD of the line OBJECT; what does it do? A: strips \n after each line
+    # it actually removes both leading (i.e., leftmost) and trailing (i.e., rightmost) characters 
     raw_bytes = next_lang.encode(encoding, errors=errors)
     # 1: what does ERRORS = ERRORS mean? what does it do? does it mean "when you run method encode, based on a given CODEX (i.e., a 
     # encoding standard you specify), assign any errors you get from that encoding process to the variable ERRORS? it's also something
@@ -33,4 +36,5 @@ def print_line(line, encoding, errors):
 languages = open('languages.txt', encoding='utf-8') # what if different than the standard I choose when I run the program? 
 
 main(languages, input_encoding, error) # from example on p. 79, "error" seems to be a standard of error (or what to do when finding 
-# errors) that I also get to decide when running the program
+# errors) that I also get to decide when running the program; pp. 84-85 confirm this perception; if "mode" STRICT, Python acusa o erro; if
+# "mode" REPLACE, it replaces the errors with a ? 
