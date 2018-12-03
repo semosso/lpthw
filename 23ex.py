@@ -24,7 +24,7 @@ def print_line(line, encoding, errors):
     raw_bytes = next_lang.encode(encoding, errors=errors)
     # 1: what does ERRORS = ERRORS mean? what does it do? does it mean "when you run method encode, based on a given CODEX (i.e., a 
     # encoding standard you specify), assign any errors you get from that encoding process to the variable ERRORS? it's also something
-    # I have to feed when running the script
+    # I have to feed when running the script; see last comments for clarification (it's actually WHAT TO DO)
     # 2: what does encode do? I'll have to feed what type of "encoding standard" I need when I run the program from terminal
     # 3: p. 83 and layman: DECODE turns bytes into UTF strings; ENCODE turns UTF strings into bytes
     cooked_string = raw_bytes.decode(encoding, errors=errors) # similar to rationale above
