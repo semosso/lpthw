@@ -1,17 +1,23 @@
 # important lesson: start programs with letters, no other characters (will return exception if number or other char)
 def break_words(stuff):
-    """This funcion will break up words for us.""" # this seems loose... No # before it, no print, no nothing... loose string
+    """This funcion will break up words for us.""" # these are DOCUMENTATION COMMENTS, notice they are loose strings
     words = stuff.split(' ')
     return words
 
 def sort_words(words):
     """Sorts the words."""
     return sorted(words)
+    # Python has native sorting through .sort() method or sorted() function
+    # you can feed a key='' parameter to specify how to sort; KEY specifies a function to be called on each element prior to comparison
+    # one such argument can be LAMBDA, a "one line function" (or anonymous function) -- lambda ARGUMENT: manipulate(argument)
+    ## lambda x, y (i.e., ARGUMENT): x + y (i.e., WHAT TO DO WITH ARGUMENT)
 
 def print_first_word(words):
     """Prints the first word after popping it off."""
     word = words.pop(0) # pop similar to pop in bash? if so, can I use similar modifiers?
     print(word)
+    # p. 93, 'how can the words.pop method change the variable itself?'
+    # in this case, words is a list, and because of that you can give it commands, and it'll retain the results of those commands 
 
 def print_last_word(words):
     """Prints the last word after popping it off."""
