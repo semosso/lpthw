@@ -97,7 +97,7 @@ if people >= dogs:
     print("People are greater than or equal to dogs.")
 
 if people <= dogs: #! missing colon
-    print("People are less than or equal to dogs.") # missing final quote
+    print("People are less than or equal to dogs.") #! missing final quote
 
 
 if people == dogs: #! equal should be double equal (i.e., math operator; not the one that assigns)
