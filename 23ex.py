@@ -2,8 +2,8 @@
 # decode Python strings into a type called bytesl; 3, how to handle errors in your string and byte handling; 4, how to read code and 
 # find out what it means even if you've never seen it before
 import sys # imports the whole SYS library, not only ARGV like we've done before
-script, input_encoding, error = sys.argv # sys.argv means "from the whole SYS library you imported above, use ARGV"?
-
+script, input_encoding, error = sys.argv # "from the whole SYS library you imported above, use ARGV"?
+# if I had used 'from sys import *' or even ARGV, wouldn't need 'sys.' above
 
 def main(language_file, encoding, errors):
 # it doesn't matter that I use same name for parameters in main and print_line, they are specific to each single function
