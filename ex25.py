@@ -1,3 +1,4 @@
+# important lesson: start programs with letters, no other characters (will return exception if number or other char)
 def break_words(stuff):
     """This funcion will break up words for us.""" # this seems loose... No # before it, no print, no nothing... loose string
     words = stuff.split(' ')
