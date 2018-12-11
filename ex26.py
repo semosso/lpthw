@@ -27,7 +27,7 @@ txt_again = open(file_again)
 print(txt_again.read()) #! that's not how you call a method (_, not .); you should also close it too
 txt_again.close()
 
-THIRD
+#THIRD
 print('Let\'s practice everything.') #! no escape sequence before the second ' (i.e., \') is breaking everything
 print('You\'d need to know \'bout escapes with \\ that do \n newlines and \t tabs.')
 #! this is fucked; indentation, and you can't break lines like this without triple ""
@@ -73,7 +73,7 @@ formula = secret_formula(start_point) #! wrong name for startpoint variable
 ## ZS: this is an easy way to apply a list to a format string
 print("We'd have {} beans, {} jars, and {} crates.".format(*formula))
 
-FOURTH
+#FOURTH
 people = 20
 cats = 30 #! wrong name
 dogs = 15
