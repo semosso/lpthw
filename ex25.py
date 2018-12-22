@@ -1,7 +1,7 @@
 # important lesson: start programs with letters, no other characters (will return exception if number or other char)
 def break_words(stuff):
     """This funcion will break up words for us.""" # these are DOCUMENTATION COMMENTS, notice they are loose strings
-    words = stuff.split(' ')
+    words = stuff.split(' ') # you have to give split an ARGUMENT (in this case, a blank space)
     return words
 
 def sort_words(words):
@@ -17,7 +17,8 @@ def print_first_word(words):
     word = words.pop(0) # pop similar to pop in bash? if so, can I use similar modifiers?
     print(word)
     # p. 93, 'how can the words.pop method change the variable itself?'
-    # in this case, words is a list, and because of that you can give it commands, and it'll retain the results of those commands 
+    # in this case, words is a LIST, and because of that you can give it commands, and it'll retain the results of those commands
+    # i.e., if words was a STRING, pop wouldn't work
 
 def print_last_word(words):
     """Prints the last word after popping it off."""
@@ -40,3 +41,6 @@ def print_first_and_last_sorted(sentence):
     words = sort_sentence(sentence)
     print_first_word(words)
     print_last_word(words)
+
+    # when importing this exercise into Python, I can either go "import ex25" and then keep calling it again (e.g., ex25.break_words(ARGUMENT)) or
+    # import all functions defined (using "from ex25 import *") and then just call the functions
