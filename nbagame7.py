@@ -20,17 +20,17 @@ def matchup(gsw, toronto):
             d_toronto.append(defender)
         elif defender in d_toronto:
             while defender in d_toronto:
-                print(f"You already assigned {defender} to guard someone {i}, pick a different player.")
-                # how to make this mention the specific GSW player?
-                # maybe here I'd create a dictionary or tuple, or whatever // e.g., match Curry and Lowry when I make that assignment
+                print(f"You already assigned {defender} to guard someone, pick a different player.")
+                # how to make this mention the specific GSW player? maybe here I'd create a dictionary or tuple, or whatever
+                # e.g., match Curry and Lowry when I make that assignment; maybe create a SEPARATE function just to create the duo?
                 defender = fix_input(input("> "))
-                d_toronto.append(defender) # this doesn't work, because it becomes infinite loop; I need a way to append, though
+                d_toronto.append(defender) # this doesn't work, it becomes infinite loop; I need a way to append, though
                 # maybe I can invert and leave the append for the else? Every "exception" within IF and ELIF, and ELSE would be the "correct"
         else:
             while defender not in toronto:
                 print(f"I don't know who that is, pick a player from the following:\n{toronto}")
                 defender = fix_input(input("> "))
-                d_toronto.append(defender) # this doesn't work, because it becomes infinite loop; I need a way to append, though
+                d_toronto.append(defender) # this doesn't work, it becomes infinite loop; I need a way to append, though
                 # maybe I can invert and leave the append for the else? Every "exception" within IF and ELIF, and ELSE would be the "correct"
 
     return d_toronto
