@@ -9,38 +9,45 @@ raptors = ["Kyle Lowry", "Danny Green", "Kawhi Leonard", "Pascal Siakam", "Serge
 # each quarter function should take both lineups as parameters, and return the differential
 # or should I just get a "change matchup function"? maybe both change matchup and quarter functions, and we can have multiple changes
 
-def matchup(gsw, toronto):
+def matchup(squad1, squad2):
     d_toronto = []
+    a_warriors = []
 
-    for i in gsw:
-        print(f"Who should guard {i}?")
-        defender = fix_input(input("> "))
+    for i in squad1: # para cada jogador em GSW
+        print(f"Who should guard {i}?") # quem deveria marcar tal jogador?
+        defender = fix_input(input("> "), squad2) # recebe dados, chama função input para buscar o nome completo
+        defender = check_lineup(defender, squad2, d_toronto) # chama função lineup para checar se já foi escolhido
+        d_toronto.append(defender)
 
-        if defender in toronto and defender not in d_toronto:
-            d_toronto.append(defender)
-        elif defender in d_toronto:
-            while defender in d_toronto:
-                print(f"You already assigned {defender} to guard someone, pick a different player.")
-                # how to make this mention the specific GSW player? maybe here I'd create a dictionary or tuple, or whatever
-                # e.g., match Curry and Lowry when I make that assignment; maybe create a SEPARATE function just to create the duo?
-                defender = fix_input(input("> "))
-                d_toronto.append(defender) # this doesn't work, it becomes infinite loop; I need a way to append, though
-                # maybe I can invert and leave the append for the else? Every "exception" within IF and ELIF, and ELSE would be the "correct"
-        else:
-            while defender not in toronto:
-                print(f"I don't know who that is, pick a player from the following:\n{toronto}")
-                defender = fix_input(input("> "))
-                d_toronto.append(defender) # this doesn't work, it becomes infinite loop; I need a way to append, though
-                # maybe I can invert and leave the append for the else? Every "exception" within IF and ELIF, and ELSE would be the "correct"
+        # attacker_index = d_toronto.index(defender)
+        # attacker = squad1[attacker_index]
+        # a_warriors.append(attacker)
+        # don't want to delete this code, but I think it's useless - i.e., I'm now switching GSW order around, only raptors
+        
+    return d_toronto, a_warriors
 
-    return d_toronto
+def fix_input(name, squad): # maybe try and merge this one with check_squad?
+   name = ''.join(x for x in squad if name.lower() in x.lower())
+   full_name = check_squad(name, squad)
+   return full_name
+    # maybe a way to get the head to head matchups would be to return also raptors.index(full_name)
 
-def fix_input(name):
-    full_name = ''.join(x for x in raptors if name.lower() in x.lower())
-    return full_name
+def check_lineup(name, squad, lineup):
+    while name in lineup:
+        name = check_squad(name, squad)
+        print(f"You already assigned {name} to guard someone, pick a different player.") # this is not working, it lets me choose whatever name not in squad
+        name = fix_input(input("> "), squad)
+    return name
 
-raptors = matchup(warriors, raptors)
-print(raptors)
+def check_squad(name, squad):
+    while name not in squad:
+        print(f"That player is not in the roster, pick one from the following:\n{squad}")
+        name = fix_input(input("> "), squad)
+    return name
+
+rap, war = matchup(warriors, raptors) # should I use these alternative vars, or just keep changing the main lists?
+print(rap) # test
+print(war) # test
 
 # decisions may lead to Curry injury or Green fouling out
 

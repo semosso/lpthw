@@ -2,7 +2,7 @@
 # In Zed's words: "assigns the value on the right to the variable on the left"
 # Double equal (==) tests if two things are equal
 cars = 100
-# Attrivutes the name "space_in_a_car" to the data "4"
+# Attributes the name "space_in_a_car" to the data "4"
 # You can do space_in_a_car=4 with no space between variable, equal, data; but that's bad form
 space_in_a_car=4
 # Attributes the name "drivers" to the data 30
