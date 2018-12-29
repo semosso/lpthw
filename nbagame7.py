@@ -1,51 +1,57 @@
-# nba 7, raptors v. warriors match-up
-
+# nba game 7, raptors v. warriors match-up
 warriors = ["Stephen Curry", "Klay Thompson", "Kevin Durant", "Draymond Green", "DeMarcus Cousins"]
 raptors = ["Kyle Lowry", "Danny Green", "Kawhi Leonard", "Pascal Siakam", "Serge Ibaka"]
+narrative = ["blablabla first quarter", "blablabla second quarter", "blablabla third quarter", "blablabla fourth quarter"] # should I have used dict? why one or the other?
+c_count = 0
 
-narratives = ["blablabla first quarter",
-"blablabla second quarter",
-"blablabla third quarter",
-"blablabla fourth quarter"
-] # should I have used dict? why one or the other?
-
-def set_lineup(squad1, squad2): # sets Raptors (squad2) lineup player by player, based on GSW (squad1) lineup
-    
-    d_toronto = []
-
-    for i in squad1: # para cada jogador em GSW
-        print(f"Who should guard {i}?")
-        defender = check_player(input("> "), squad2, d_toronto) # chama check_player para buscar o nome completo, checar se está no time, checar se foi escolhido antes
-        d_toronto.append(defender) # após check, adiciona o escolhido ao lineup
-
-    print(f"Ok, here are the matchups you set:")
-    for i in range(0, 5):
-        print(f"{d_toronto[i]} is guarding {squad1[i]}.") 
-    confirm = input("Confirm? (Y/N)\n> ").lower() # consider adding the possibility of switching specific players later
-    if confirm == "y":
-        return d_toronto
+def confirm_lineup(gsw, toronto, tempo):
+    if tempo == 0: l_toronto = set_lineup(gsw, toronto)
     else:
-        set_lineup(squad1, squad2)
+        change = ""
+        while change.lower() not in ("y", "n"):
+            print("Do you want to change the lineup you previously set? (Y/N)")
+            change = input("> ").lower()
+        if change == "y": l_toronto = set_lineup(gsw, toronto)
+        elif change == "n": l_toronto = toronto
 
-
-def check_player(name, squad, lineup): # confirms if player is in roster or has already been assigned; I don't think I need the length check, but what the hell
+    print(f"Ok, here are the matchups for this quarter:\n")
+    for i in range(0, 5): print(f"{l_toronto[i]} is guarding {gsw[i]}.") 
+    confirm = input("\nConfirm? (Y/N)\n> ").lower() # consider adding the possibility of switching specific players later
     
-    if len(name) > 3:
-        name = ''.join(x for x in squad if name.lower() in x.lower()) # valeria a pena criar uma função só pra isso? se repete em três lugares
-        
-        while name not in squad: # confirma se o jogador está no time
-            print(f"That player is not in the roster, pick one from the following:\n{squad}")
-            new_name = input("> ")
-            name = ''.join(x for x in squad if new_name.lower() in x.lower())
+    if confirm == "y": return l_toronto
+    else: set_lineup(gsw, toronto)
+
+def set_lineup (gsw, toronto):
+    l_toronto = []
+
+    for i in gsw:
+        defender = name_input(f"Who should guard {i}?", toronto)
+        defender = check_player(defender, toronto, l_toronto)
+        l_toronto.append(defender)
+    return l_toronto
+
+def check_player(name, squad, lineup):       
+    while name not in squad: name = name_input(f"That player is not in the roster, pick one from the following:\n{squad}", squad)
             
-        while name in lineup: # confirma se o jogador já foi selecionado
-            gsw_player = warriors[lineup.index(name)]
-            print(f"You already assigned {name} to guard {gsw_player}, pick a different player.")
-            new_name = input("> ")
-            name = ''.join(x for x in squad if new_name.lower() in x.lower())
+    while name in lineup:
+        gsw_player = warriors[lineup.index(name)]
+        name = name_input(f"You already assigned {name} to guard {gsw_player}, pick a different player.", squad)
+    return name
 
-        return name
-    else:
-        print(f"That player is not in the roster, pick one from the following:\n{squad}")
-        new_name = input("> ")
-        check_player(new_name, squad, lineup)
+def name_input (question, squad):
+    print(question)
+    name = input("> ")
+    name = ''.join(x for x in squad if name.lower() in x.lower())
+    return name
+
+def each_quarter(narrative, gsw, toronto, tempo, counter):
+    print(narrative)
+    l_toronto = confirm_lineup(gsw, toronto, tempo)
+    if l_toronto[0] == "Kawhi Leonard": return l_toronto, counter + 1
+    else: return l_toronto, counter
+
+lineup, c_count = each_quarter(narrative[0], warriors, raptors, 0, c_count)
+for i in range(1, 4): lineup, c_count = each_quarter(narrative[i], warriors, lineup, i, c_count)
+
+if c_count == 4: print("injury")
+else: print("derrota")
