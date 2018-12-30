@@ -2,7 +2,7 @@
 warriors = ["Stephen Curry", "Klay Thompson", "Kevin Durant", "Draymond Green", "DeMarcus Cousins"]
 raptors = ["Kyle Lowry", "Danny Green", "Kawhi Leonard", "Pascal Siakam", "Serge Ibaka"]
 narrative = ["blablabla first quarter", "blablabla second quarter", "blablabla third quarter", "blablabla fourth quarter"] # should I have used dict? why one or the other?
-c_count = 0
+c_count = 0 # next step is adding different scenarios (e.g., Green fouling out)
 
 def confirm_lineup(gsw, toronto, tempo):
     if tempo == 0: l_toronto = set_lineup(gsw, toronto)
@@ -46,12 +46,12 @@ def name_input (question, squad):
 
 def each_quarter(narrative, gsw, toronto, tempo, counter):
     print(narrative)
-    l_toronto = confirm_lineup(gsw, toronto, tempo)
+    l_toronto = confirm_lineup(gsw, toronto, tempo) # do I need this for the first quarter?
     if l_toronto[0] == "Kawhi Leonard": return l_toronto, counter + 1
     else: return l_toronto, counter
 
-lineup, c_count = each_quarter(narrative[0], warriors, raptors, 0, c_count)
-for i in range(1, 4): lineup, c_count = each_quarter(narrative[i], warriors, lineup, i, c_count)
+lineup, c_count = each_quarter(narrative[0], warriors, raptors, 0, c_count) # this looks dirty, but I need a way to send the predefine lineup to just be confirmed
+for i in range(1, 4): lineup, c_count = each_quarter(narrative[i], warriors, lineup, i, c_count) # maybe the change to SET and CONFIRM_LINEUPS will take care of this
 
 if c_count == 4: print("injury")
 else: print("derrota")
