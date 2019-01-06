@@ -1,15 +1,18 @@
 # nba game 7, raptors v. warriors match-up
 warriors = ["Stephen Curry", "Klay Thompson", "Kevin Durant", "Draymond Green", "DeMarcus Cousins"]
 raptors = ["Kyle Lowry", "Danny Green", "Kawhi Leonard", "Pascal Siakam", "Serge Ibaka"]
-narrative = ["blablabla first quarter", "blablabla second quarter", "blablabla third quarter", "blablabla fourth quarter"]
-c_count = 0 # to add: different scenarios (e.g., Green fouling out)
+narrative = ["Now set your defensive matchups or the first quarter:",
+    "blablabla close first quarter, weak quarter by Curry, Durant impossible to guard as usual, and quiet Thompson.",
+    "blablabla close second quarter, Curry starting to act up, Durant finally missing some shots, still no sign from Thompson.",
+    "blablabla close third quarter, Curry well guarded, Durant back to being Durant, but Thompson on fire."]
+c_count = 0 # to add: different scenarios (e.g., Green fouling out), different quarterly results from each individual matchups, etc. 
 
 def confirm_lineup(gsw, toronto, tempo):
     if tempo == 0: l_toronto = set_lineup(gsw, toronto)
     else:
         change = ""
         while change.lower() not in ("y", "n"):
-            print("Do you want to change the lineup you previously set? (Y/N)")
+            print("Do you want to change the matchups from last quarter? (Y/N)")
             change = input("> ").lower()
         if change == "y": l_toronto = set_lineup(gsw, toronto)
         elif change == "n": l_toronto = toronto
@@ -47,8 +50,11 @@ def each_quarter(narrative, gsw, toronto, tempo, counter):
     if l_toronto[0] == "Kawhi Leonard": return l_toronto, counter + 1
     else: return l_toronto, counter
 
+print(f"""Finally free from the LeBron curse, the Raptors make the NBA finals. After six close games, Toronto and Golden State are set to face each other in game 7.
+The Warriors lineup is: {warriors}
+The Raptors lineup is: {raptors}""")
 lineup, c_count = each_quarter(narrative[0], warriors, raptors, 0, c_count) # ugly, but I need it for Q1; maybe the change to SET/CONFIRM_LINEUPS took care of this?
 for i in range(1, 4): lineup, c_count = each_quarter(narrative[i], warriors, lineup, i, c_count)
 
-if c_count == 4: print("Curry injury, you win")
-else: print("you lose")
+if c_count == 4: print("Curry couldn't handle the league's best defender up his ass the whole game, and picks up a late injury. You win by 2!")
+else: print("You're up 2 until the last seconds, but Green set up a high screen and Curry hit a dagger from the logo. Tough break, guess it's rebuild time again!")
