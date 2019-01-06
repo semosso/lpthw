@@ -20,6 +20,8 @@ class MyStuff(object):
         print("I AM CLASSY APPLES!")
 
 # if a class is a mini-module, there has to be a concept similar to IMPORT for classes; it's called INSTANTIATE (i.e., create); when you INSTANTIATE, you get an OBJECT
+## INSTANTIATE is to CLASS what IMPORT is to MODULE
+## INSTANTIATE means "create an object from a class"; you INSTANTIATE a class by calling the class like you'd call a function (i.e., variable = function())
 thing = MyStuff()
 thing.apple() # remember the idea of "with open("doc.txt") as f", f would work just like THING here
 print(thing.tangerine)
@@ -47,7 +49,8 @@ class Song(object):
     def sing_me_a_song(self):
         for line in self.lyrics: # line could as well be x, or i, or whatever; so it's not really going by LINE, but by item inside LIST
             print(line)
-    
+
+# does this means that "list" should be passed to class Song? As what? Does self.lyrics create a variable within the object? wtf is going on? 
 happy_bday = Song(["Happy birthday to you",
                    "I don't want to get sued",
                    "So I'll stop right there"])
@@ -55,7 +58,7 @@ happy_bday = Song(["Happy birthday to you",
 bulls_on_parade = Song(["They rally around tha family",
                         "With pockets full of shells"])
 
-happy_bday.sing_me_a_song() # happy_bday jas already been assigned SONG class (or object?) when I created the variable; same with bulls...
+happy_bday.sing_me_a_song() # happy_bday has already been assigned SONG class (or object?) when I created the variable; same with bulls...
 
 bulls_on_parade.sing_me_a_song()
 
