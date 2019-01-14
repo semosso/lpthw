@@ -80,7 +80,7 @@ class EscapePod(Scene):
 
     def enter(self):
         print("narrativa, com prompt") # no caso do Zed, prompt era para escolher qual pod funcionava, importanto random
-        choice = "> "
+        choice = input("> ")
 
         if choice == "certa":
             print("narrativa de sucesso")
