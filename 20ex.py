@@ -19,7 +19,7 @@ def print_a_line(line_count, f):
 current_file = open(input_file) # opens with no modifiers, so defaults to "r", read
 
 print('First let\'s print the whole file:\n')
-print_all(current_file) # read works because file is opened in ln 14, current_file
+print_all(current_file) # read works because file is opened definiton of current_file
 
 print('\nNow let\'s rewind, kind of like a tape.\n')
 rewind(current_file)

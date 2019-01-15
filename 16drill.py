@@ -12,10 +12,11 @@ input('?') # does this make the ? get printed one line down?
 
 print('Opening the file...')
 target = open(filename, 'w') # what is "w"? parameter to open? or string? Is this what creates the file?
-# if you don't have that file, it creates it! is
+# if you don't have that file, it creates it!
 
 print('Truncating the file. Goodbye!')
 target.truncate() # couldn't I use truncate(filename) or filename.truncate())? i.e., do I have to open() it first?
+# no to both. truncate() is not a function, it's a method of the object; filename is a string, so it doesn't have that method
 
 print('Now I\'m going to ask you for three lines.')
 
