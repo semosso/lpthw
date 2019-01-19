@@ -26,7 +26,7 @@ def print_line(line, encoding, errors):
     # encoding standard you specify), assign any errors you get from that encoding process to the variable ERRORS? it's also something
     # I have to feed when running the script; see last comments for clarification (it's actually WHAT TO DO)
     # 2: what does encode do? I'll have to feed what type of "encoding standard" I need when I run the program from terminal
-    # 3: p. 83 and layman: DECODE turns bytes into UTF strings; ENCODE turns UTF strings into bytes
+    # 3: p. 83 and layman: DECODE turns bytes into UTF strings; ENCODE turns UTF strings into bytes (DEEBEES)
     cooked_string = raw_bytes.decode(encoding, errors=errors) # similar to rationale above
 
     print(raw_bytes, '<===>', cooked_string) # this means print the ENCODED version, the middle string, and then the DECODED version
