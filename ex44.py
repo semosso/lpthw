@@ -88,11 +88,11 @@ son.override()
 dad.altered()
 son.altered()
 
-# # multiple inheritance and MRO
-# # problem if one class inherits from more than one or more parent; in this case, Python has to look up the possible function in the class hierarchy
-# # this is done using method resolution order (MRO) and an algorithm called C3
-# # you use super() FUNCTION to help finding the right function; most common use is with __init__ functions in base classes
-# # Zed: "this is usually the only place where you need to do some things in a child, then complete the initialization in the parent"
+# multiple inheritance and MRO
+# problem if one class inherits from more than one parent; in this case, Python has to look up the possible function in the class hierarchy
+# this is done using method resolution order (MRO) and an algorithm called C3
+# you use super() FUNCTION to help finding the right function; most common use is with __init__ functions in base classes
+# Zed: "this is usually the only place where you need to do some things in a child, then complete the initialization in the parent"
 class Child(Parent):
 
     def __init__(self, stuff):
@@ -135,4 +135,4 @@ son.override()
 son.altered()
 
 # PROBLEM: you don't want to have duplicated code all over the software; both INHERITANCE and COMPOSITION solve it
-# I by cerating implied features, C by giving modules and capacity to call functions in other classes
+# I by creating implied features, C by giving modules and capacity to call functions in other classes
